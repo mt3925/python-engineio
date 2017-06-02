@@ -141,7 +141,7 @@ class Socket(object):
         # try to set a socket timeout matching the configured ping interval
         for attr in ['_sock', 'socket']:  # pragma: no cover
             if hasattr(ws, attr) and hasattr(getattr(ws, attr), 'settimeout'):
-                getattr(ws, attr).settimeout(self.server.ping_timeout)
+                getattr(ws, attr).settimeout(self.server.ping_timeout + 1)
 
         if self.connected:
             # the socket was already connected, so this is an upgrade
